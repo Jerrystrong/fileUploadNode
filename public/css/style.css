@@ -1,0 +1,142 @@
+body{
+    font-family: 'inter', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100dvh;
+    width: 100vw;
+}
+*{
+    transition: all .4s ease-out;
+}
+.uploadContainer{
+    width: 30%;
+}
+.uploadPlace{
+    border: 1px dashed #7c7c7c;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    height: fit-content;
+    position: relative;
+    padding: 10px 5px;
+}
+.greenLight{
+    background-color: rgba(221, 241, 231, 0.938);
+}
+.none{
+    display: none !important;
+    animation: fade-out .4s ease-out forwards;
+}
+.form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.dropingContainer img{
+    width: 200px;
+}
+#profil{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+    z-index: 22222222;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+.prevous{
+    height: 100%;
+    width: 100%;
+    /* background-color: rgba(109, 150, 129, 0.938); */
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: row-reverse;
+    padding: 10px 0px;
+}
+.btnManuel{
+    z-index: 33333;
+    color:rgb(23, 129, 75) ;
+    text-decoration: none;
+    font-size: 14px;
+}
+.btn-g{
+    display: flex;
+    gap: 10px;
+}
+button{
+    height: fit-content;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.Submit-profil{
+    background-color: rgb(23, 129, 75);
+    color: #fffffe;
+    
+}
+.cancelButton{
+    background-color: rgb(129, 23, 23);
+    color: #fffffe;
+}
+.img-raduis{
+    border-radius: 5px;
+    object-fit: cover;
+}
+.textDesc{
+    font-size: 12px;
+}
+.under-line{
+    text-decoration: underline;
+}
+.contB{
+    display: grid;
+    gap: 10px;
+}
+.kabe{
+    background-color:rgba(221, 241, 231, 0.938);
+    filter: blur(20px);
+}
+@keyframes fade-out {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+@media screen and ( max-width:1020px ) {
+    .uploadContainer{
+        width: 40%;
+    }
+    .prevous{
+        width: auto;
+    }
+}
+@media screen and ( max-width:470px ) {
+    .uploadContainer{
+        width: 70%;
+    }
+    .prevous{
+        flex-direction: column-reverse;
+        width: auto;
+        padding: 10px;
+    }
+    .img-raduis{
+        width: 100% !important;
+    }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+    <h1>Upload your profil</h1>
+    <section class="uploadContainer">
+        <form class="uploadPlace">
+            <!-- enctype="multipart/form-data" -->
+            <div class="prevous none"></div>
+            <div class="form">
+                <div class="dropingContainer">
+                    <img src="assets/icons8-téléchargement-des-mises-à-jour-100.png" alt="download-image">
+                </div>
+                <input type="file" name="profil" id="profil" accept="image/*">
+                <label for="" class="nameFile"></label>
+                <label >
+                    Drop and drap your file here
+                </label>
+                or <a href="" class="btnManuel">Click here to select manuelly</a>
+            </div>
+            <!-- <button type="submit">sub</button> -->
+        </form>
+    </section>
+    <template id="button-template">
+        <button class="Submit-profil" type="submit">Update Profil</button>
+        <button class="cancelButton">Cancel Process</button>
+    </template>
+</body>
+</html>
