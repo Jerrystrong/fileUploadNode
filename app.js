@@ -8,7 +8,6 @@ const saveDb=require('./middleware/savingDb')
 const PORT=process.env.PORT||3700
 const path=require('path')
 const app=express()
-console.log(path.join(__dirname,'/public'))
 app.use(express.static(path.join(__dirname,'/public')))
 app.use(express.static(path.join(__dirname,'/files')))
 app.use(express.json())
@@ -29,9 +28,7 @@ app.post('/upload',
     saveDb,
     (req,res)=>{
     const profils=req.files
-    console.log(profils)
     const profil=profils.profil
-    console.log(profils.profil)
     const patht=path.join(__dirname,'files',profil.name)
     profil.mv(patht,(err)=>{
         if(err) return res.status(500).json({status:'error',message:err})
@@ -39,10 +36,6 @@ app.post('/upload',
     res.json({status:'success','message':`the profil ${profil.name} have been saved succefully`})
 })
 app.get('/galeriepersonnel',galerieControler)
-// app.use('/galerie',express.static(path.join(__dirname,'/files')))
-// app.get('/galerie',(req,res)=>{
-//     res.sendFile(path.join(__dirname,'site','galerie.html'))
-// })
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`)
 })

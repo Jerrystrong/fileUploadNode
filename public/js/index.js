@@ -5,9 +5,6 @@ let prevous=document.querySelector('.prevous')
 let formCont=document.querySelector('.form')
 let templateButton=document.querySelector('#button-template').content
 let galerieSet=document.querySelector('.galerieSet')
-// let essaie=['maman']
-// let p=['maman','papa','fille','papa','maman']
-// console.log(essaie.every(ev=> p.includes(ev)))
 // function to extrait data from template tag
 /**
  * 
@@ -37,12 +34,10 @@ function createElement(elTag,att){
     return element
 }
 profilField.addEventListener('change',(e)=>{
-    console.log(e.currentTarget.files)
     let buttonCollection=extraictDataFromTemplate(templateButton)
     let divEl=createElement('div',{class:'btn-g'})
     let divCont=createElement('div',{class:'contB'})
     let para=createElement('div',{class:'textDesc'})
-    // document.querySelector('.uploadContainer').style.width="50%"
     buttonCollection.forEach(btn=>divEl.appendChild(btn))
     const file=e.currentTarget.files[0]
     const Freader=new FileReader()
@@ -74,18 +69,12 @@ btnManuel.addEventListener('click',(e)=>{
     profilField.click()
 })
 const congateEl=document.querySelector('.congate')
-// congateEl.addEventListener('click',(e)=>{
-//     location.replace('/')
-// },{
-//     capture:false
-// })
 document.querySelector('.see-galerie').addEventListener('click',(e)=>{
     e.preventDefault()
     const fetchGalerie=async function () {
         try{
             const FsendGalerie= await fetch('http://localhost:3700/galeriepersonnel')
             const jsonResponse= await FsendGalerie.json()
-            console.log(jsonResponse)
             jsonResponse.data.forEach(dat => {
                 let img=createElement('img',{class:'galerie-image',alt:dat.name})
                 img.src=`../${dat.name}`
@@ -98,8 +87,6 @@ document.querySelector('.see-galerie').addEventListener('click',(e)=>{
     }
 
     fetchGalerie()
-
-
 })
 document.querySelector('form').addEventListener('submit',(e)=>{
     e.preventDefault()
@@ -114,7 +101,6 @@ document.querySelector('form').addEventListener('submit',(e)=>{
                 body: fData
             })
             const response= await Fsend.json()
-            console.log(response)
             if(response!== null || response !== undefined){
                 congateEl.classList.remove('none')
                 messageEl.textContent=response.message
