@@ -26,6 +26,7 @@ body{
     position: relative;
     padding: 10px 5px;
 }
+
 .greenLight{
     background-color: rgba(221, 241, 231, 0.938);
 }
@@ -106,10 +107,53 @@ button{
 .contB{
     display: grid;
     gap: 10px;
+    width: 60%;
 }
 .kabe{
     background-color:rgba(221, 241, 231, 0.938);
     filter: blur(20px);
+}
+.congate{
+    background: #fffffe;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 444444444444;
+}
+.contCong{
+    padding: 10px;
+    box-shadow: 1px -1px 4px rgb(220, 237, 228);
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.contCong div{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.contCong img{
+    width: 40px;
+    height: 40px;
+}
+.see-galerie{
+    background: rgba(23, 32, 129, 0.847);
+    color: white;
+}
+.galerieSet{
+    display: flex;
+}
+.galerieSet img{
+    width: 300px;
 }
 @keyframes fade-out {
     from{
@@ -119,6 +163,17 @@ button{
         opacity: 1;
     }
 }
+.galerieSet{
+    display: grid !important;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    height: 30vh;
+    overflow: scroll;
+}
+.galerieSet img{
+    width: 100%;
+    height: 100%;
+}
 @media screen and ( max-width:1020px ) {
     .uploadContainer{
         width: 40%;
@@ -126,8 +181,24 @@ button{
     .prevous{
         width: auto;
     }
+    .galerieSet{
+        display: flex !important;
+        width: 100%;
+        overflow: scroll;
+        /* height: 80vh; */
+        /* overflow-y: scroll; */
+    }
+    .contB{
+        width: 60%;
+    }
 }
-@media screen and ( max-width:470px ) {
+@media screen and ( max-width:600px ) {
+    .contB{
+        width: 100%;
+    }
+    .contCong{
+        width: 80% !important;
+    }
     .uploadContainer{
         width: 70%;
     }
@@ -138,5 +209,21 @@ button{
     }
     .img-raduis{
         width: 100% !important;
+    }
+    .galerieSet{
+        display: flex ;
+        width: 100%;
+        /* height: 80vh; */
+        overflow-y: scroll;
+    }
+    .galerieSet img{
+        width: 80% !important;
+        margin: 0 auto;
+        height: fit-content !important;
+    }
+    .jjk{
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
     }
 }

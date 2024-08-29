@@ -4,6 +4,10 @@ const btnManuel=document.querySelector('.btnManuel')
 let prevous=document.querySelector('.prevous')
 let formCont=document.querySelector('.form')
 let templateButton=document.querySelector('#button-template').content
+let galerieSet=document.querySelector('.galerieSet')
+// let essaie=['maman']
+// let p=['maman','papa','fille','papa','maman']
+// console.log(essaie.every(ev=> p.includes(ev)))
 // function to extrait data from template tag
 /**
  * 
@@ -38,7 +42,7 @@ profilField.addEventListener('change',(e)=>{
     let divEl=createElement('div',{class:'btn-g'})
     let divCont=createElement('div',{class:'contB'})
     let para=createElement('div',{class:'textDesc'})
-   
+    // document.querySelector('.uploadContainer').style.width="50%"
     buttonCollection.forEach(btn=>divEl.appendChild(btn))
     const file=e.currentTarget.files[0]
     const Freader=new FileReader()
@@ -69,18 +73,40 @@ btnManuel.addEventListener('click',(e)=>{
     e.preventDefault()
     profilField.click()
 })
+const congateEl=document.querySelector('.congate')
+// congateEl.addEventListener('click',(e)=>{
+//     location.replace('/')
+// },{
+//     capture:false
+// })
+document.querySelector('.see-galerie').addEventListener('click',(e)=>{
+    e.preventDefault()
+    const fetchGalerie=async function () {
+        try{
+            const FsendGalerie= await fetch('http://localhost:3700/galeriepersonnel')
+            const jsonResponse= await FsendGalerie.json()
+            console.log(jsonResponse)
+            jsonResponse.data.forEach(dat => {
+                let img=createElement('img',{class:'galerie-image',alt:dat.name})
+                img.src=`../${dat.name}`
+                galerieSet.appendChild(img)
+                galerieSet.classList.remove('none')
+            });
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    fetchGalerie()
+
+
+})
 document.querySelector('form').addEventListener('submit',(e)=>{
     e.preventDefault()
-    e.preventDefault()
-    console.log('clicked')
     const fileSet=profilField.files[0]
-    console.log(fileSet)
+    const messageEl=document.querySelector('.message')
     const fData=new FormData()
     fData.append('profil',fileSet)
-    // console.log(fData.profil)
-    fData.forEach(dat=>{
-        console.log(dat)
-    })
     const sendFile= async () =>{
         try{
             const Fsend= await fetch('http://localhost:3700/upload',{
@@ -89,8 +115,10 @@ document.querySelector('form').addEventListener('submit',(e)=>{
             })
             const response= await Fsend.json()
             console.log(response)
-            while(!response){
-                form.classList.add('kabe')
+            if(response!== null || response !== undefined){
+                congateEl.classList.remove('none')
+                messageEl.textContent=response.message
+               
             }
 
         }catch(e){
@@ -98,4 +126,5 @@ document.querySelector('form').addEventListener('submit',(e)=>{
         }
     }
     sendFile()
+
 })
